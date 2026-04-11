@@ -1,8 +1,9 @@
 using System;
 using System.Text;
-using Arc3Trials.Arenaline;
+using Arc3Trials.Adreniline;
 using CommandSystem;
 using LabApi.Features.Wrappers;
+using NorthwoodLib.Pools;
 
 namespace Arc3Trials.Commands
 {
@@ -15,9 +16,9 @@ namespace Arc3Trials.Commands
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            StringBuilder active = new StringBuilder();
-            StringBuilder cooldown = new StringBuilder();
-            StringBuilder ready = new StringBuilder();
+            StringBuilder active = StringBuilderPool.Shared.Rent();
+            StringBuilder cooldown = StringBuilderPool.Shared.Rent();
+            StringBuilder ready = StringBuilderPool.Shared.Rent();
 
             foreach (Player player in Player.ReadyList)
             {
@@ -25,24 +26,27 @@ namespace Arc3Trials.Commands
                 {
                     continue;
                 }
-                string name = player.DisplayName;
                 switch (AdrenalineManager.GetState(player.UserId))
                 {
                     case AdrenalineState.Active:
-                        active.AppendLine($"  {name}");
+                        active.AppendLine($"  {player.DisplayName}");
                         break;
                     case AdrenalineState.Cooldown:
-                        cooldown.AppendLine($"  {name}");
+                        cooldown.AppendLine($"  {player.DisplayName}");
                         break;
                     case AdrenalineState.Ready:
-                        ready.AppendLine($"  {name}");
+                        ready.AppendLine($"  {player.DisplayName}");
                         break;
                 }
             }
 
-            response = $"\n[ACTIVE]\n{(active.Length > 0 ? active.ToString() : "  none")}\n" +
-                       $"[COOLDOWN]\n{(cooldown.Length > 0 ? cooldown.ToString() : "  none")}\n" +
-                       $"[READY]\n{(ready.Length > 0 ? ready.ToString() : "  none")}";
+            string activeStr = StringBuilderPool.Shared.ToStringReturn(active);
+            string cooldownStr = StringBuilderPool.Shared.ToStringReturn(cooldown);
+            string readyStr = StringBuilderPool.Shared.ToStringReturn(ready);
+
+            response = $"\nActive\n{(activeStr.Length > 0 ? activeStr : "  none\n")}" +
+                       $"Cooldown\n{(cooldownStr.Length > 0 ? cooldownStr : "  none\n")}" +
+                       $"Ready\n{(readyStr.Length > 0 ? readyStr : "  none")}";
             return true;
         }
     }

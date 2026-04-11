@@ -3,7 +3,7 @@ using CustomPlayerEffects;
 using LabApi.Features.Wrappers;
 using MEC;
 
-namespace Arc3Trials.Arenaline
+namespace Arc3Trials.Adreniline
 {
     public enum AdrenalineState
     {
@@ -12,7 +12,7 @@ namespace Arc3Trials.Arenaline
         Cooldown
     }
 
-    public class AdrenalineManager
+    public static class AdrenalineManager
     {
         
 
@@ -60,6 +60,7 @@ namespace Arc3Trials.Arenaline
 
             player.EnableEffect<MovementBoost>(intensity: 20, duration: Config.EffectDuration);
             player.EnableEffect<Invigorated>(intensity: 1, duration: Config.EffectDuration);
+            player.EnableEffect<Blurred>(intensity: 25, duration: Config.BlurredDuration);
 
             CoroutineHandle handle = Timing.RunCoroutine(AdrenalineCoroutine(id));
             Coroutines[id] = handle;

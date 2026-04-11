@@ -1,4 +1,4 @@
-using Arc3Trials.Arenaline;
+using Arc3Trials.Adreniline;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.Scp049Events;
 using PlayerRoles;
