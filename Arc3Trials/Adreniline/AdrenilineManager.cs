@@ -16,11 +16,9 @@ namespace Arc3Trials.Adreniline
     {
         
 
-        private static readonly Dictionary<string, AdrenalineState> PlayerStates
-            = new Dictionary<string, AdrenalineState>();
+        private static readonly Dictionary<string, AdrenalineState> PlayerStates = new();
 
-        private static readonly Dictionary<string, CoroutineHandle> Coroutines
-            = new Dictionary<string, CoroutineHandle>();
+        private static readonly Dictionary<string, CoroutineHandle> Coroutines = new();
 
         public static void CheckAdrenaline(Player player)
         {

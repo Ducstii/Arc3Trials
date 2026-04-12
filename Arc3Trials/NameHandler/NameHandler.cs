@@ -8,12 +8,12 @@ namespace Arc3Trials.NameHandler
 {
     public class NameHandler
     {
-        private static int _zombieInstance = 0;
-        private static readonly Random Random = new Random();
+        private static int _zombieInstance;
+        private static readonly Random Random = new();
         private static string[] _firstNames = Array.Empty<string>();
         private static string[] _lastNames = Array.Empty<string>();
 
-        public static readonly Dictionary<string, string> Names = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> Names = new Dictionary<string, string>();
 
         private static readonly string NamesDir = Path.Combine(PathManager.Configs.FullName, "Arc3Trials");
         private static readonly string FirstNamesPath = Path.Combine(NamesDir, "FirstNames.txt");
