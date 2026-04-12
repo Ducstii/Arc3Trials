@@ -41,5 +41,10 @@ namespace Arc3Trials.Events
         {
             AdrenalineManager.CheckAdrenaline(args.Player);
         }
+
+        public static void RoundStarted()
+        {
+            NameHandler.NameHandler.ResetZombieCounter();
+        }
     }
 }

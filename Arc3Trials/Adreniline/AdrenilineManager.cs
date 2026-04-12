@@ -63,7 +63,7 @@ namespace Arc3Trials.Adreniline
             player.EnableEffect<Blurred>(intensity: 25, duration: Config.BlurredDuration);
 
             CoroutineHandle handle = Timing.RunCoroutine(AdrenalineCoroutine(id));
-            Coroutines[id] = handle;
+            Coroutines[id] = handle; 
         }
 
         private static IEnumerator<float> AdrenalineCoroutine(string userId)

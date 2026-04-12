@@ -8,6 +8,7 @@ namespace Arc3Trials.NameHandler
 {
     public class NameHandler
     {
+        private static int _zombieInstance = 0;
         private static readonly Random Random = new Random();
         private static string[] _firstNames = Array.Empty<string>();
         private static string[] _lastNames = Array.Empty<string>();
@@ -63,9 +64,14 @@ namespace Arc3Trials.NameHandler
 
         public static void GiveZombieName(Player player)
         {
-            int instanceId = Random.Next(1000, 9999);
             Names.TryGetValue(player.UserId, out string previousName);
-            player.DisplayName = $"Instance #{instanceId} | {previousName ?? "Unknown"}";
+            int instanceId = ++_zombieInstance;
+            player.DisplayName = $"{previousName ?? "Unknown"} | SCP-049-2-{instanceId}";
+        }
+
+        public static void ResetZombieCounter()
+        {
+            _zombieInstance = 0;
         }
 
         public static void ResetName(Player player)

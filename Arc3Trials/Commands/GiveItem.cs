@@ -29,7 +29,7 @@ namespace Arc3Trials.Commands
                 return false;
             }
 
-            if (!int.TryParse(arguments.Array[arguments.Offset + 0], out int itemId))
+            if (!int.TryParse(arguments.Array?[arguments.Offset + 0], out int itemId))
             {
                 response = "ItemID is a number";
                 return false;
@@ -67,8 +67,8 @@ namespace Arc3Trials.Commands
             {
                 Vector3 playerlocation = player.Position;
                 Pickup.Create(itemType, playerlocation);
-
-
+                response = $"Gave {player.Nickname} a {itemType.GetName()}";
+                return true;
             }
             player.AddItem(itemType);
             response = $"Gave {player.Nickname} a {itemType.GetName()}";
