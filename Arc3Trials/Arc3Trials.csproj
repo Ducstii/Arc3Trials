@@ -81,6 +81,8 @@
       <Content Include="References\Mirror.dll" />
       <Content Include="References\NorthwoodLib.dll" />
       <Content Include="References\UnityEngine.CoreModule.dll" />
+    </ItemGroup>
+    <ItemGroup>
       <None Include="packages.config" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
