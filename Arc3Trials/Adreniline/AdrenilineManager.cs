@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using CustomPlayerEffects;
 using LabApi.Features.Wrappers;
 using MEC;
-using UnityEngine;
-using Logger = LabApi.Features.Console.Logger;
+
 
 namespace Arc3Trials.Adreniline
 {
@@ -16,17 +15,6 @@ namespace Arc3Trials.Adreniline
 
     public static class AdrenalineManager
     {
-        extension(Player player)
-        {
-            public void Harrass()
-            {
-                player.EnableEffect<Concussed>(255,10,true);
-                player.EnableEffect<Slowness>(255,10,true);
-                Timing.RunCoroutine(FlashbangCoroutine(player, 10));
-
-            }
-        }
-
         private static readonly Dictionary<string, AdrenalineState> PlayerStates = new();
 
         private static readonly Dictionary<string, CoroutineHandle> Coroutines = new();
@@ -90,15 +78,5 @@ namespace Arc3Trials.Adreniline
             Coroutines.Remove(userId);
         }
 
-        private static IEnumerator<float> FlashbangCoroutine(Player player, int times)
-        {
-            for (int i = 0; i < times; i++)
-            {
-                player.EnableEffect<Flashed>(255, 0.1f);
-                yield return Timing.WaitForSeconds(0.1f);
-                player.DisableEffect<Flashed>();
-                yield return Timing.WaitForSeconds(0.1f);
-            }
-        }
     }
 }
