@@ -1,28 +1,17 @@
 using Arc3Trials.Adreniline;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.Scp049Events;
-using PlayerRoles;
 
 namespace Arc3Trials.Events
 {
     public class EventHandler
     {
-        private static readonly Team[] HumanTeams =
-        {
-            Team.ClassD,
-            Team.Scientists,
-            Team.FoundationForces,
-            Team.ChaosInsurgency,
-        };
 
         public static void OnSpawned(PlayerSpawnedEventArgs args)
         {
-            foreach (Team team in HumanTeams)
+            if (args.Player.IsHuman)
             {
-                if (args.Role.Team == team)
-                {
-                    NameHandler.NameHandler.GiveRandomName(args.Player);
-                }
+                NameHandler.NameHandler.GiveZombieName(args.Player);
             }
         }
 

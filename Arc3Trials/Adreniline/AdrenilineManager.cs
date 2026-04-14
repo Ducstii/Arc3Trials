@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using CustomPlayerEffects;
 using LabApi.Features.Wrappers;
 using MEC;
+using UnityEngine;
+using Logger = LabApi.Features.Console.Logger;
 
 namespace Arc3Trials.Adreniline
 {
@@ -14,7 +16,6 @@ namespace Arc3Trials.Adreniline
 
     public static class AdrenalineManager
     {
-        
 
         private static readonly Dictionary<string, AdrenalineState> PlayerStates = new();
 
@@ -22,8 +23,10 @@ namespace Arc3Trials.Adreniline
 
         public static void CheckAdrenaline(Player player)
         {
+            Logger.Info("{player.Harrass}");
             if (player.MaxHealth <= 0)
                 return;
+            
 
             if (player.Health / player.MaxHealth >= Config.HpThreshold)
                 return;
