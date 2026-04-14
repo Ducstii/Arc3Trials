@@ -23,7 +23,7 @@ public class harrass
             }
             if (arguments.Count < 2)
             {
-                response = "Usage: harrass <playerID> <duration>";
+                response = "Usage: harrass <playerID> <flashCount>";
                 return false;
             }
 
@@ -34,13 +34,13 @@ public class harrass
                 return false;
             }
 
-            if (!int.TryParse(arguments.At(1), out int duration))
+            if (!int.TryParse(arguments.At(1), out int flashCount))
             {
-                response = "Duration must be a number";
+                response = "Flash count must be a number";
                 return false;
             }
-            
-            player.Harrass(duration);
+
+            player.Harrass(flashCount);
             response = $"Harassing {player.Nickname}";
             return true;
         }
