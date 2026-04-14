@@ -14,7 +14,7 @@ namespace Arc3Trials.Events
         {
             if (args.Player.IsHuman)
             {
-                NameHandler.NameHandler.GiveZombieName(args.Player);
+                NameHandler.NameHandler.GiveRandomName(args.Player);
             }
         }
 

@@ -13,7 +13,7 @@ namespace Arc3Trials.NameHandler
         private static string[] _firstNames = Array.Empty<string>();
         private static string[] _lastNames = Array.Empty<string>();
 
-        private static readonly Dictionary<string, string> Names = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> Names = new();
 
         private static readonly string NamesDir = Path.Combine(PathManager.Configs.FullName, "Arc3Trials");
         private static readonly string FirstNamesPath = Path.Combine(NamesDir, "FirstNames.txt");
@@ -77,6 +77,7 @@ namespace Arc3Trials.NameHandler
         public static void ResetName(Player player)
         {
             player.DisplayName = player.Nickname;
+            Names.Remove(player.UserId);
         }
 
         private static string RandomFrom(string[] pool) => pool[Random.Next(pool.Length)];
