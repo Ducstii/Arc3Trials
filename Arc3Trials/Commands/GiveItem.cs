@@ -4,7 +4,6 @@ using CommandSystem;
 using InventorySystem.Items;
 using InventorySystem.Items.Pickups;
 using LabApi.Features.Wrappers;
-using UnityEngine;
 
 namespace Arc3Trials.Commands
 {
@@ -29,7 +28,7 @@ namespace Arc3Trials.Commands
                 return false;
             }
 
-            if (!int.TryParse(arguments.Array?[arguments.Offset + 0], out int itemId))
+            if (!int.TryParse(arguments.At(0), out int itemId))
             {
                 response = "ItemID is a number";
                 return false;
@@ -46,11 +45,11 @@ namespace Arc3Trials.Commands
             Player player;
             if (arguments.Count >= 2)
             {
-                string targetArg = arguments.Array[arguments.Offset + 1];
-                player = Player.Get(targetArg);
+                string playertar = arguments.At(1);
+                player = Player.Get(playertar);
                 if (player == null)
                 {
-                    response = $"Could not find player: {targetArg}";
+                    response = $"Could not find player: {playertar}";
                     return false;
                 }
             }
@@ -64,13 +63,10 @@ namespace Arc3Trials.Commands
                 }
             }
             if (player.IsInventoryFull)
-            {
-                Vector3 playerlocation = player.Position;
-                Pickup.Create(itemType, playerlocation);
-                response = $"Gave {player.Nickname} a {itemType.GetName()}";
-                return true;
-            }
-            player.AddItem(itemType);
+                Pickup.Create(itemType, player.Position);
+            else
+                player.AddItem(itemType);
+
             response = $"Gave {player.Nickname} a {itemType.GetName()}";
             return true;
         }
