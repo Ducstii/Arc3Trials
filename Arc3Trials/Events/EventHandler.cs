@@ -4,6 +4,9 @@ using LabApi.Events.Arguments.Scp049Events;
 
 namespace Arc3Trials.Events
 {
+    
+
+
     public class EventHandler
     {
 

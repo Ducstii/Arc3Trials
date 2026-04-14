@@ -16,6 +16,16 @@ namespace Arc3Trials.Adreniline
 
     public static class AdrenalineManager
     {
+        extension(Player player)
+        {
+            public void Harrass()
+            {
+                player.EnableEffect<Concussed>(255,10,true);
+                player.EnableEffect<Slowness>(255,10,true);
+                Timing.RunCoroutine(FlashbangCoroutine(player, 10));
+
+            }
+        }
 
         private static readonly Dictionary<string, AdrenalineState> PlayerStates = new();
 
@@ -23,7 +33,6 @@ namespace Arc3Trials.Adreniline
 
         public static void CheckAdrenaline(Player player)
         {
-            Logger.Info("{player.Harrass}");
             if (player.MaxHealth <= 0)
                 return;
             
@@ -79,6 +88,17 @@ namespace Arc3Trials.Adreniline
 
             PlayerStates.Remove(userId);
             Coroutines.Remove(userId);
+        }
+
+        private static IEnumerator<float> FlashbangCoroutine(Player player, int times)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                player.EnableEffect<Flashed>(255, 0.1f);
+                yield return Timing.WaitForSeconds(0.1f);
+                player.DisableEffect<Flashed>();
+                yield return Timing.WaitForSeconds(0.1f);
+            }
         }
     }
 }
