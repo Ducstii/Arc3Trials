@@ -21,10 +21,10 @@ namespace Arc3Trials.Adreniline
         {
             for (int i = 0; i < times; i++)
             {
-                player.EnableEffect<Blindness>(255, 0.1f);
-                yield return Timing.WaitForSeconds(0.1f);
+                player.EnableEffect<Blindness>(255, 0.05f);
+                yield return Timing.WaitForSeconds(0.005f);
                 player.DisableEffect<Blindness>();
-                yield return Timing.WaitForSeconds(0.1f);
+                yield return Timing.WaitForSeconds(0.005f);
             }
         }
     }
