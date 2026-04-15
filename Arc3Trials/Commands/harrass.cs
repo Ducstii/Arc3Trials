@@ -27,7 +27,13 @@ public class harrass
                 return false;
             }
 
-            Player player = Player.Get(arguments.At(0));
+            if (!int.TryParse(arguments.At(0), out int playerId))
+            {
+                response = "Player ID must be a number";
+                return false;
+            }
+
+            Player player = Player.Get(playerId);
             if (player == null)
             {
                 response = $"Could not find player: {arguments.At(0)}";
