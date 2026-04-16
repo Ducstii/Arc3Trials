@@ -80,6 +80,6 @@ namespace Arc3Trials.NameHandler
             Names.Remove(player.UserId);
         }
 
-        private static string RandomFrom(string[] pool) => pool[Random.Next(pool.Length)];
+        private static string RandomFrom(string[] pool) => pool.Length > 0 ? pool[Random.Next(pool.Length)] : "Unknown";
     }
 }

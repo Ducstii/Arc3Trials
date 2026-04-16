@@ -25,7 +25,7 @@ namespace Arc3Trials.Adreniline
                 return;
             
 
-            if (player.Health / player.MaxHealth >= Config.HpThreshold)
+            if (player.Health / player.MaxHealth >= Arc3Plugin.AConfig.HpThreshold)
                 return;
 
             if (GetState(player.UserId) != AdrenalineState.Ready)
@@ -56,9 +56,9 @@ namespace Arc3Trials.Adreniline
             string id = player.UserId;
             PlayerStates[id] = AdrenalineState.Active;
 
-            player.EnableEffect<MovementBoost>(intensity: 20, duration: Config.EffectDuration);
-            player.EnableEffect<Invigorated>(intensity: 1, duration: Config.EffectDuration);
-            player.EnableEffect<Blurred>(intensity: 25, duration: Config.BlurredDuration);
+            player.EnableEffect<MovementBoost>(intensity: 20, duration: Arc3Plugin.AConfig.EffectDuration);
+            player.EnableEffect<Invigorated>(intensity: 1, duration: Arc3Plugin.AConfig.EffectDuration);
+            player.EnableEffect<Blurred>(intensity: 25, duration: Arc3Plugin.AConfig.BlurredDuration);
 
             CoroutineHandle handle = Timing.RunCoroutine(AdrenalineCoroutine(id));
             Coroutines[id] = handle; 
@@ -67,15 +67,25 @@ namespace Arc3Trials.Adreniline
         private static IEnumerator<float> AdrenalineCoroutine(string userId)
         {
             
-            yield return Timing.WaitForSeconds(Config.EffectDuration);
+            yield return Timing.WaitForSeconds(Arc3Plugin.AConfig.EffectDuration);
 
             PlayerStates[userId] = AdrenalineState.Cooldown;
 
             
-            yield return Timing.WaitForSeconds(Config.CooldownDuration);
+            yield return Timing.WaitForSeconds(Arc3Plugin.AConfig.CooldownDuration);
 
             PlayerStates.Remove(userId);
             Coroutines.Remove(userId);
+        }
+
+        public static void ClearCoroutines()
+        {
+            foreach (CoroutineHandle handle in Coroutines.Values)
+            {
+                Timing.KillCoroutines(handle);
+            }
+            Coroutines.Clear();
+            PlayerStates.Clear();
         }
 
     }

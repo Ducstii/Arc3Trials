@@ -46,7 +46,12 @@ namespace Arc3Trials.Commands
             if (arguments.Count >= 2)
             {
                 string playertar = arguments.At(1);
-                player = Player.Get(playertar);
+                if (!int.TryParse(playertar, out int targetId))
+                {
+                    response = "Player ID must be a number";
+                    return false;
+                }
+                player = Player.Get(targetId);
                 if (player == null)
                 {
                     response = $"Could not find player: {playertar}";
