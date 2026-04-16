@@ -10,7 +10,6 @@ namespace Arc3Trials.Events
             PlayerEvents.Death += EventHandler.OnDied;
             Scp049Events.ResurrectedBody += EventHandler.OnResurrected;
             PlayerEvents.Hurt += EventHandler.OnHurt;
-            ServerEvents.RoundStarted += EventHandler.RoundStarted;
         }
 
         public static void Unregister()
@@ -19,7 +18,6 @@ namespace Arc3Trials.Events
             PlayerEvents.Death -= EventHandler.OnDied;
             Scp049Events.ResurrectedBody -= EventHandler.OnResurrected;
             PlayerEvents.Hurt -= EventHandler.OnHurt;
-            ServerEvents.RoundStarted -= EventHandler.RoundStarted;
         }
     }
 }

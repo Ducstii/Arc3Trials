@@ -1,8 +1,6 @@
 using System;
-using System.Linq;
 using CommandSystem;
 using InventorySystem.Items;
-using InventorySystem.Items.Pickups;
 using LabApi.Features.Wrappers;
 
 namespace Arc3Trials.Commands
@@ -12,7 +10,7 @@ namespace Arc3Trials.Commands
     {
         public string Command => "GiveItem";
         public string Description => "Gives an item";
-        public string[] Aliases => new[] {"giveitem"};
+        public string[] Aliases =>["giveitem"];
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {

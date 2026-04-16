@@ -12,7 +12,7 @@ namespace Arc3Trials.Commands
     {
         public string Command => "adrenstatus";
         public string Description => "Shows the adren status";
-        public string[] Aliases => new[] { "adren" };
+        public string[] Aliases => ["adren"];
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {

@@ -65,13 +65,8 @@ namespace Arc3Trials.NameHandler
         public static void GiveZombieName(Player player)
         {
             Names.TryGetValue(player.PlayerId, out string previousName);
-            int instanceId = ++_zombieInstance;
+            int instanceId = UnityEngine.Random.Range(1,300);
             player.DisplayName = $"{previousName ?? "Unknown"} | SCP-049-2-{instanceId}";
-        }
-
-        public static void ResetZombieCounter()
-        {
-            _zombieInstance = 0;
         }
 
         public static void ResetName(Player player)
