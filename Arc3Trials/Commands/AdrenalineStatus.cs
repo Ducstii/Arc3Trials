@@ -29,13 +29,13 @@ namespace Arc3Trials.Commands
                 switch (AdrenalineManager.GetState(player.PlayerId))
                 {
                     case AdrenalineState.Active:
-                        active.AppendLine($"  {player.DisplayName}");
+                        active.AppendLine($"  {player.DisplayName}, ID: {player.PlayerId}");
                         break;
                     case AdrenalineState.Cooldown:
-                        cooldown.AppendLine($"  {player.DisplayName}");
+                        cooldown.AppendLine($"  {player.DisplayName}, ID: {player.PlayerId}");
                         break;
                     case AdrenalineState.Ready:
-                        ready.AppendLine($"  {player.DisplayName}");
+                        ready.AppendLine($"  {player.DisplayName}, ID: {player.PlayerId}");
                         break;
                 }
             }
