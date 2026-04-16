@@ -49,6 +49,9 @@
         <Reference Include="Mirror">
           <HintPath>..\..\..\Projects\projectssources\Mirror.dll</HintPath>
         </Reference>
+        <Reference Include="0Harmony">
+          <HintPath>References\0Harmony.dll</HintPath>
+        </Reference>
         <Reference Include="NorthwoodLib">
           <HintPath>..\..\..\Projects\projectssources\NorthwoodLib.dll</HintPath>
         </Reference>
@@ -77,6 +80,7 @@
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>
+      <Content Include="References\0Harmony.dll" />
       <Content Include="References\Assembly-CSharp-firstpass.dll" />
       <Content Include="References\Assembly-CSharp-Publicized.dll" />
       <Content Include="References\Assembly-CSharp.dll" />

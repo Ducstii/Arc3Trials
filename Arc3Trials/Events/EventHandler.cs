@@ -14,6 +14,7 @@ namespace Arc3Trials.Events
         {
             if (args.Player.IsHuman)
             {
+                
                 NameHandler.NameHandler.GiveRandomName(args.Player);
             }
         }
@@ -21,7 +22,7 @@ namespace Arc3Trials.Events
         public static void OnDied(PlayerDeathEventArgs args)
         {
             NameHandler.NameHandler.ResetName(args.Player);
-            AdrenalineManager.ResetPlayer(args.Player.UserId);
+            AdrenalineManager.ResetPlayer(args.Player.PlayerId);
         }
 
         public static void OnResurrected(Scp049ResurrectedBodyEventArgs args)

@@ -13,7 +13,7 @@ namespace Arc3Trials.NameHandler
         private static string[] _firstNames = Array.Empty<string>();
         private static string[] _lastNames = Array.Empty<string>();
 
-        private static readonly Dictionary<string, string> Names = new();
+        private static readonly Dictionary<int, string> Names = new();
 
         private static readonly string NamesDir = Path.Combine(PathManager.Configs.FullName, "Arc3Trials");
         private static readonly string FirstNamesPath = Path.Combine(NamesDir, "FirstNames.txt");
@@ -58,13 +58,13 @@ namespace Arc3Trials.NameHandler
         public static void GiveRandomName(Player player)
         {
             string name = $"{RandomFrom(_firstNames)} {RandomFrom(_lastNames)}";
-            Names[player.UserId] = name;
+            Names[player.PlayerId] = name;
             player.DisplayName = name;
         }
 
         public static void GiveZombieName(Player player)
         {
-            Names.TryGetValue(player.UserId, out string previousName);
+            Names.TryGetValue(player.PlayerId, out string previousName);
             int instanceId = ++_zombieInstance;
             player.DisplayName = $"{previousName ?? "Unknown"} | SCP-049-2-{instanceId}";
         }
@@ -77,7 +77,7 @@ namespace Arc3Trials.NameHandler
         public static void ResetName(Player player)
         {
             player.DisplayName = player.Nickname;
-            Names.Remove(player.UserId);
+            Names.Remove(player.PlayerId);
         }
 
         private static string RandomFrom(string[] pool) => pool.Length > 0 ? pool[Random.Next(pool.Length)] : "Unknown";

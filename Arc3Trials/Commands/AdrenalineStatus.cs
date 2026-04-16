@@ -26,7 +26,7 @@ namespace Arc3Trials.Commands
                 {
                     continue;
                 }
-                switch (AdrenalineManager.GetState(player.UserId))
+                switch (AdrenalineManager.GetState(player.PlayerId))
                 {
                     case AdrenalineState.Active:
                         active.AppendLine($"  {player.DisplayName}");
