@@ -6,7 +6,7 @@ namespace Arc3Trials
 {
     public class Arc3Plugin : Plugin<Config>
     {
-        public static Arc3Plugin _instance { get; private set; }  
+        public static Arc3Plugin _instance { get; private set; }
         public static Config AConfig { get; private set; }
         public override string Author => "Ducstii";
         public override string Name => "Arc3Trials";
@@ -18,16 +18,18 @@ namespace Arc3Trials
         {
             _instance = this;
             AConfig = Config;
+            // only load names and register events if the plugin is enabled in config
             if (Config.IsEnabled)
             {
                 NameHandler.NameHandler.LoadNames();
                 EventRegistrar.Register();
             }
-            
+
         }
 
         public override void Disable()
         {
+            // kill any running adrenaline coroutines and unregister events
             Adreniline.AdrenalineManager.ClearCoroutines();
             EventRegistrar.Unregister();
             _instance = null;
