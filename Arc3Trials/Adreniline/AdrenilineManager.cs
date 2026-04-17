@@ -32,7 +32,7 @@ namespace Arc3Trials.Adreniline
             if (player.Health / player.MaxHealth >= Arc3Plugin.AConfig.HpThreshold)
                 return;
 
-            // only trigger if they are in the ready state, dont stack or interrupt cooldown
+            // only trigger if they are in the ready state
             if (GetState(player.PlayerId) != AdrenalineState.Ready)
                 return;
 
@@ -63,7 +63,7 @@ namespace Arc3Trials.Adreniline
             // mark them as active before applying effects
             PlayerStates[id] = AdrenalineState.Active;
 
-            // apply the 3 effects
+            // apply the effects
             player.EnableEffect<MovementBoost>(intensity: 20, duration: Arc3Plugin.AConfig.EffectDuration);
             player.EnableEffect<Invigorated>(intensity: 1, duration: Arc3Plugin.AConfig.EffectDuration);
             player.EnableEffect<Blurred>(intensity: 25, duration: Arc3Plugin.AConfig.BlurredDuration);
