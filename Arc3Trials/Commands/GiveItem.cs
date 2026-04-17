@@ -8,6 +8,7 @@ namespace Arc3Trials.Commands
     [CommandHandler(typeof(RemoteAdminCommandHandler))]
     public class GiveItem : ICommand
     {
+        // sets up the command
         public string Command => "GiveItem";
         public string Description => "Gives an item";
         public string[] Aliases =>["giveitem"];
@@ -71,7 +72,7 @@ namespace Arc3Trials.Commands
                     return false;
                 }
             }
-            // if the inventory is full just drop it at their feet, otherwise add it normally
+            // if the inventory is full just drop it at their pos, otherwise add it normally
             if (player.IsInventoryFull)
                 Pickup.Create(itemType, player.Position);
             else
