@@ -24,7 +24,7 @@ namespace Arc3Trials.Adreniline
 
         public static void CheckAdrenaline(Player player)
         {
-            // sanity check, maxhealth shouldnt be 0 but just in case
+            // maxhealth shouldnt be 0 but just in case
             if (player.MaxHealth <= 0)
                 return;
 
