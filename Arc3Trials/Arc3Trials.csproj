@@ -71,7 +71,6 @@
         <Compile Include="Adreniline\HarassExtensions.cs" />
         <Compile Include="Commands\AdrenalineStatus.cs" />
         <Compile Include="Commands\GiveItem.cs" />
-        <Compile Include="Commands\harrass.cs" />
         <Compile Include="Config.cs" />
         <Compile Include="Events\EventHandler.cs" />
         <Compile Include="Events\EventRegistrar.cs" />

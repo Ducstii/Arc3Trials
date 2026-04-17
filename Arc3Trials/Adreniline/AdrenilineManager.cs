@@ -63,7 +63,7 @@ namespace Arc3Trials.Adreniline
             // mark them as active before applying effects
             PlayerStates[id] = AdrenalineState.Active;
 
-            // apply the effects
+            // apply the 3 effects
             player.EnableEffect<MovementBoost>(intensity: 20, duration: Arc3Plugin.AConfig.EffectDuration);
             player.EnableEffect<Invigorated>(intensity: 1, duration: Arc3Plugin.AConfig.EffectDuration);
             player.EnableEffect<Blurred>(intensity: 25, duration: Arc3Plugin.AConfig.BlurredDuration);
