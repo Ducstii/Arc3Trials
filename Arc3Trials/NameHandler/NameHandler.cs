@@ -11,6 +11,7 @@ namespace Arc3Trials.NameHandler
         // Initialize 2 arrays for first names and last names.
         private static string[] _firstNames = Array.Empty<string>();
         private static string[] _lastNames = Array.Empty<string>();
+        
         // makes the names dict, as a <int, string> int holding the playerid and string holding the name.
         private static readonly Dictionary<int, string> Names = new();
         
@@ -47,12 +48,15 @@ namespace Arc3Trials.NameHandler
             Directory.CreateDirectory(NamesDir);
 
             if (!File.Exists(FirstNamesPath))
+                
                 // Write the first names file if it does not exist
                 File.WriteAllLines(FirstNamesPath, DefaultFirstNames);
 
             if (!File.Exists(LastNamesPath))
+                
                 // Write the last names file if it does not exist
                 File.WriteAllLines(LastNamesPath, DefaultLastNames);
+            
             // Read and load both files into the array
             _firstNames = File.ReadAllLines(FirstNamesPath);
             _lastNames = File.ReadAllLines(LastNamesPath);
@@ -63,8 +67,10 @@ namespace Arc3Trials.NameHandler
         {
             // get a name as a string by calling randomfrom to just get random index from the array
             string name = $"{RandomFrom(_firstNames)} {RandomFrom(_lastNames)}";
+            
             // makes a dict entry for the player receiving it 
             Names[player.PlayerId] = name;
+            
             // set the players name to the random one
             player.DisplayName = name;
         }
@@ -73,10 +79,12 @@ namespace Arc3Trials.NameHandler
         {
             // lookup the player id in the dict to try and get the old name
             Names.TryGetValue(player.PlayerId, out string previousName);
+            
             // grabs a random number from unityengine.random, 2-299
             int instanceId = UnityEngine.Random.Range(0,1000);
+            
             // if the dict doesn't have the userid with  name it will return null, so if it is it becomes "Unknown".
-            // And I set the instance ID after 049-2-[id] cause thats how it works.
+            // And I set the instance ID after 049-2-[id] cause that's how it works.
             player.DisplayName = $"{previousName ?? "Unknown"} | SCP-049-2-{instanceId}";
         }
 

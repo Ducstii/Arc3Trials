@@ -49,9 +49,6 @@
         <Reference Include="Mirror">
           <HintPath>..\..\..\Projects\projectssources\Mirror.dll</HintPath>
         </Reference>
-        <Reference Include="0Harmony">
-          <HintPath>References\0Harmony.dll</HintPath>
-        </Reference>
         <Reference Include="NorthwoodLib">
           <HintPath>..\..\..\Projects\projectssources\NorthwoodLib.dll</HintPath>
         </Reference>
@@ -71,6 +68,7 @@
         <Compile Include="Adreniline\HarassExtensions.cs" />
         <Compile Include="Commands\AdrenalineStatus.cs" />
         <Compile Include="Commands\GiveItem.cs" />
+        <Compile Include="Commands\Harrass.cs" />
         <Compile Include="Config.cs" />
         <Compile Include="Events\EventHandler.cs" />
         <Compile Include="Events\EventRegistrar.cs" />

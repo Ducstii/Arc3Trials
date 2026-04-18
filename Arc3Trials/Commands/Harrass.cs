@@ -38,9 +38,9 @@ public class Harrass : ICommand
             response = "Flash count must be a number";
             return false;
         }
-
         player.Harrass(flashCount);
+
         response = $"Harassing {player.Nickname}";
         return true;
     }
-}
+}    

@@ -60,6 +60,7 @@ namespace Arc3Trials.Adreniline
         private static void Activate(Player player)
         {
             int id = player.PlayerId;
+            
             // mark them as active before applying effects
             PlayerStates[id] = AdrenalineState.Active;
 

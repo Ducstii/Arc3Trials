@@ -20,7 +20,8 @@ namespace Arc3Trials.Events
             // sets the players name back to their steam name
             string name = args.Player.Nickname;
             args.Player.DisplayName = name;
-            // sets adrenlinine back to ready
+            
+            // sets adrenaline back to ready
             AdrenalineManager.ResetPlayer(args.Player.PlayerId);
         }
 

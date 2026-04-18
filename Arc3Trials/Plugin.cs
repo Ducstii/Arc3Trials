@@ -18,7 +18,8 @@ namespace Arc3Trials
         {
             _instance = this;
             AConfig = Config;
-            // only load names and register events if the plugin is enabled in config
+            
+            // only load names and register events if the plugin is enabled
             if (Config.IsEnabled)
             {
                 NameHandler.NameHandler.LoadNames();
@@ -29,7 +30,7 @@ namespace Arc3Trials
 
         public override void Disable()
         {
-            // kill any running adrenaline coroutines and unregister events
+            // kill any running adrenaline coroutines
             Adreniline.AdrenalineManager.ClearCoroutines();
             EventRegistrar.Unregister();
             _instance = null;

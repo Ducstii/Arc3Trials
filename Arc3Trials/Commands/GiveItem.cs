@@ -47,6 +47,7 @@ namespace Arc3Trials.Commands
             ItemType itemType = (ItemType)itemId;
 
             Player player;
+            
             // if a player id was provided, target that player, otherwise just target the sender
             if (arguments.Count >= 2)
             {
