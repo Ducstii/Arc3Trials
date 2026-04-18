@@ -23,8 +23,10 @@ namespace Arc3Trials.Adreniline
         {
             for (int i = 0; i < times; i++)
             {
+                if (!Player.Dictionary.ContainsValue(player)) yield break;
                 player.EnableEffect<Flashed>(1, 0.1f);
                 yield return Timing.WaitForSeconds(0.1f);
+                if (!Player.Dictionary.ContainsValue(player)) yield break;
                 player.DisableEffect<Flashed>();
                 yield return Timing.WaitForSeconds(0.1f);
             }
